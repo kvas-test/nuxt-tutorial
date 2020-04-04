@@ -28,9 +28,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: [
-    '@/assets/scss/main.scss',
-  ],
+  css: ['@/assets/scss/main.scss'],
   /*
    ** Plugins to load before mounting the App
    */
@@ -65,11 +63,11 @@ export default {
       // add frontmatter-markdown-loader
       config.module.rules.push({
         test: /\.md$/,
-        loader: "frontmatter-markdown-loader",
+        loader: 'frontmatter-markdown-loader',
         options: {
           mode: [Mode.VUE_COMPONENT]
         }
-      });
+      })
     }
   },
   generate: {
@@ -79,5 +77,5 @@ export default {
         .filter((filename) => path.extname(filename) === '.md')
         .map((filename) => `posty/${path.parse(filename).name}`)
     }
-  },
+  }
 }
