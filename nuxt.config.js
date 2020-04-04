@@ -1,3 +1,6 @@
+import fs from 'fs' // available in webpack no need to install
+import path from 'path' // available in webpack no need to install
+
 import Mode from 'frontmatter-markdown-loader/mode'
 
 export default {
@@ -68,5 +71,13 @@ export default {
         }
       });
     }
-  }
+  },
+  generate: {
+    routes () {
+      return fs
+        .readdirSync(path.resolve(__dirname, 'articles'))
+        .filter((filename) => path.extname(filename) === '.md')
+        .map((filename) => `posty/${path.parse(filename).name}`)
+    }
+  },
 }
